@@ -10,12 +10,12 @@ import {
 } from 'react-icons/fa';
 
 const services = [
-  { icon: <FaShuttleVan className="text-[#c69c6d] text-2xl" />, title: ' Personalized attention:' },
-  { icon: <FaBroom className="text-[#c69c6d] text-2xl" />, title: 'Maximum profitability: ' },
-  { icon: <FaWifi className="text-[#c69c6d] text-2xl" />, title: ' Flexible and stress-free check-ins:' },
-  { icon: <FaTshirt className="text-[#c69c6d] text-2xl" />, title: 'Dynamic real-time pricing: ' },
-  { icon: <FaUtensils className="text-[#c69c6d] text-2xl" />, title: 'Comprehensive or service-based management:' },
-  { icon: <FaParking className="text-[#c69c6d] text-2xl" />, title: 'Housekeeper Services' },
+  { icon: <FaShuttleVan className="text-[#2e3527] text-2xl" />, title: ' Personalized attention:' },
+  { icon: <FaBroom className="text-[#2e3527] text-2xl" />, title: 'Maximum profitability: ' },
+  { icon: <FaWifi className="text-[#2e3527] text-2xl" />, title: ' Flexible and stress-free check-ins:' },
+  { icon: <FaTshirt className="text-[#2e3527] text-2xl" />, title: 'Dynamic real-time pricing: ' },
+  { icon: <FaUtensils className="text-[#2e3527] text-2xl" />, title: 'Comprehensive or service-based management:' },
+  { icon: <FaParking className="text-[#2e3527] text-2xl" />, title: 'Housekeeper Services' },
 ];
 
 const Services = () => {

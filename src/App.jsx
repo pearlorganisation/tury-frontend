@@ -3,7 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Routes from "./routes/Routes.jsx";
+import Routes from "./routes/routes.jsx";
 
 function App() {
   return (

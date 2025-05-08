@@ -1,0 +1,241 @@
+/* Luxury Button Styles */
+.luxury-button-container {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 200, 0.2));
+    transition: filter 0.3s ease;
+  }
+  
+  .luxury-button-container:hover {
+    filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.4));
+  }
+  
+  .luxury-button {
+    position: relative;
+    width: 320px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  .luxury-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #003b34, #00e0bb, #003b34);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  
+  .luxury-button-left {
+    clip-path: polygon(15% 0%, 100% 0%, 85% 50%, 100% 100%, 15% 100%, 0% 50%);
+  }
+  
+  .luxury-button-right {
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+  }
+  
+  .luxury-button-gradient {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 59, 52, 0.95), rgba(0, 183, 155, 0.95));
+    transition: all 0.4s ease;
+  }
+  
+  .luxury-button-text {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  
+  /* Button Hover Effects */
+  .luxury-button-container:hover .luxury-button-gradient {
+    background: linear-gradient(135deg, rgba(0, 183, 155, 0.95), rgba(0, 59, 52, 0.95));
+    transform: scale(1.05);
+  }
+  
+  .luxury-button-container:hover .luxury-button::after {
+    opacity: 1;
+    animation: borderGlow 2s infinite alternate;
+  }
+  
+  @keyframes borderGlow {
+    0% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Shimmer Animation */
+  .luxury-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 200%;
+    }
+  }
+  
+  /* Logo Animation */
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0 0 5px rgba(0, 224, 187, 0.3));
+    }
+    50% {
+      filter: drop-shadow(0 0 15px rgba(0, 224, 187, 0.6));
+    }
+    100% {
+      filter: drop-shadow(0 0 5px rgba(0, 224, 187, 0.3));
+    }
+  }
+  
+  /* Responsive adjustments */
+  /* Extra Small Devices (phones, 576px and down) */
+  @media (max-width: 576px) {
+    .luxury-button {
+      width: 260px;
+      height: 45px;
+    }
+  
+    .luxury-button-text {
+      font-size: 0.85rem;
+    }
+  
+    .banner-logo {
+      width: 100% !important;
+      max-width: 580px !important;
+    }
+  
+    .banner-buttons-container {
+      margin-top: 8rem !important;
+      gap: 1.5rem !important;
+    }
+  
+    .banner-tagline {
+      margin-top: 2rem !important;
+      font-size: 1.1rem !important;
+    }
+  
+    .banner-content {
+      padding-top: 6rem !important;
+    }
+  }
+  
+  /* Small Devices (landscape phones, 576px to 767px) */
+  @media (min-width: 577px) and (max-width: 767px) {
+    .luxury-button {
+      width: 280px;
+      height: 55px;
+    }
+    /* .luxury-button-container{
+        width: 80px;
+        height: 40px;
+    } */
+  
+    .luxury-button-text {
+      font-size: 0.9rem;
+    }
+  
+    .banner-logo {
+      width: 90% !important;
+      max-width: 350px !important;
+    }
+  
+    .banner-buttons-container {
+      margin-top: 3rem !important;
+      gap: 2rem !important;
+    }
+  
+    .banner-content {
+      padding-top: 8rem !important;
+    }
+  }
+  
+  /* Medium Devices (tablets, 768px to 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .luxury-button {
+      width: 240px;
+      height: 55px;
+    }
+  
+    .banner-logo {
+      width: 450px !important;
+    }
+  
+    .banner-buttons-container {
+      margin-top: 4rem !important;
+      gap: 2rem !important;
+    }
+  }
+  
+  /* Large Devices (desktops, 992px to 1199px) */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .luxury-button {
+      width: 280px;
+      height: 60px;
+    }
+  
+    .banner-logo {
+      width: 550px !important;
+    }
+  
+    .banner-buttons-container {
+      margin-top: 5rem !important;
+    }
+  }
+  
+  /* Extra Large Devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .luxury-button {
+      width: 320px;
+      height: 60px;
+      margin-top: 14px;
+    }
+  
+    .banner-logo {
+      width: 950px !important;
+      max-width: 1000px !important;
+    }
+  
+    .banner-buttons-container {
+      margin-top: 6rem !important;
+    }
+  }
+  

@@ -1,29 +1,42 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { RiArrowDropDownLine, RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import video from '../../assets/home/banner.mp4';
+"use client"
+
+import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
+import { RiArrowDropDownLine } from "react-icons/ri"
+import { motion } from "framer-motion"
+import "../../css/banner.css"
 
 function Banner() {
-  const { t } = useTranslation();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { t } = useTranslation()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    setIsVisible(true)
+  }, [])
 
   const navLinks = (
     <>
-      {['reserve', 'us', 'services', 'rates'].map((item) => (
+      {["reserve", "us", "services", "rates"].map((item) => (
         <div key={item} className="group relative flex cursor-pointer">
           <span className="uppercase font-light tracking-wider">{t(item)}</span>
-          <span className="ml-1 pt-1"><RiArrowDropDownLine /></span>
+          <span className="ml-1 pt-1">
+            <RiArrowDropDownLine />
+          </span>
         </div>
       ))}
-      <div className="cursor-pointer uppercase font-light tracking-wider">{t('experiences')}</div>
+      <div className="cursor-pointer uppercase font-light tracking-wider">{t("experiences")}</div>
       <div className="group relative flex cursor-pointer">
-        <span className="uppercase font-light tracking-wider">{t('blog')}</span>
-        <span className="ml-1 pt-1"><RiArrowDropDownLine /></span>
+        <span className="uppercase font-light tracking-wider">{t("blog")}</span>
+        <span className="ml-1 pt-1">
+          <RiArrowDropDownLine />
+        </span>
       </div>
     </>
-  );
+  )
 
   return (
     <div className="relative min-h-screen font-serif text-white">
@@ -37,70 +50,73 @@ function Banner() {
           playsInline
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-slate-800/60" />
+        <div className="absolute inset-0 bg-black/75" />
       </div>
-
-      {/* Top Bar */}
-      <div className="relative z-10 py-3 px-6 flex justify-between items-center text-sm">
-        <div><span>{t('address')}</span></div>
-        <div className="hidden md:flex space-x-8">
-          <span>{t('tel')}</span>
-          <span>{t('fax')}</span>
-          <span>{t('email')}</span>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="relative z-10 flex justify-between items-center px-6 py-6">
-        {/* Left: Hamburger (mobile) or Nav (desktop) */}
-        <div className="flex items-center space-x-6">
-          <button
-            className="text-3xl text-white lg:hidden"
-            onClick={toggleSidebar}
-          >
-            <RiMenu3Line />
-          </button>
-
-          <nav className="hidden lg:flex space-x-6 text-xl">
-            {navLinks}
-          </nav>
-        </div>
-
-        {/* Right: Contact Us Button (always visible) */}
-        <div className="flex items-center">
-          <button className="border border-white px-6 py-2 uppercase text-sm md:text-base lg:text-xl tracking-wider hover:bg-white hover:text-slate-800 transition duration-300">
-            {t('contact')}
-          </button>
-        </div>
-      </div>
-
-      {/* Sidebar for mobile */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-70 backdrop-blur-sm">
-          <div className="fixed top-0 left-0 w-72 h-full bg-slate-900 text-white p-6 shadow-lg transform transition-transform duration-300 ease-in-out">
-            <div className="flex justify-between items-center mb-8">
-              <span className="text-xl font-semibold">{t('menu')}</span>
-              <button onClick={toggleSidebar} className="text-2xl">
-                <RiCloseLine />
-              </button>
-            </div>
-            <nav className="space-y-6 text-lg">
-              {navLinks}
-            </nav>
-          </div>
-        </div>
-      )}
 
       {/* Center Logo */}
-      <div className="relative z-10 flex flex-col items-center text-center h-[calc(100vh-120px)] px-4">
-        <img
+      <div className="relative z-10 flex pt-36 flex-col items-center text-center px-4 banner-content">
+        <motion.img
           src="assets/logo/logo.png"
           alt="Logo"
-          className="w-64 md:w-96 lg:w-[650px] mb-6"
+          className="banner-logo mb-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{
+            opacity: isVisible ? 1 : 0,
+            y: isVisible ? 0 : -20,
+            filter: "drop-shadow(0 0 15px rgba(0, 224, 187, 0.3))",
+          }}
+          transition={{
+            duration: 1.2,
+            ease: "easeOut",
+          }}
         />
+
+        {/* Luxury Buttons Container */}
+        <motion.div
+          className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 mt-12 banner-buttons-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isVisible ? 1 : 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          {/* Property Owners Button */}
+          <motion.div
+            className="luxury-button-container"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <div className="luxury-button luxury-button-left">
+              <div className="luxury-button-gradient">
+                <span className="luxury-button-text">Property Owners</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Rent an Apartment Button */}
+          <motion.div
+            className="luxury-button-container"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <div className="luxury-button luxury-button-right">
+              <div className="luxury-button-gradient">
+                <span className="luxury-button-text">Rent an Apartment</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Tagline */}
+        <motion.div
+          className="mt-12 text-xl md:text-2xl font-light tracking-widest banner-tagline"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ delay: 1, duration: 1 }}
+        >
+          {/* <span className="italic">Discover Luxury in Barcelona</span> */}
+        </motion.div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Banner;
+export default Banner

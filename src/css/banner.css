@@ -164,8 +164,9 @@
     }
   
     .banner-logo {
-      width: 100% !important;
-      max-width: 580px !important;
+      width: 60% !important;
+      max-width: 280px !important;
+      margin-top: 4rem;
     }
   
     .banner-buttons-container {
@@ -201,6 +202,7 @@
     .banner-logo {
       width: 90% !important;
       max-width: 350px !important;
+       margin-top: 4rem;
     }
   
     .banner-buttons-container {
@@ -222,6 +224,7 @@
   
     .banner-logo {
       width: 450px !important;
+      margin-top: 4rem;
     }
   
     .banner-buttons-container {
@@ -255,12 +258,28 @@
     }
   
     .banner-logo {
-      width: 950px !important;
-      max-width: 1000px !important;
+      width: 750px !important;
+      max-width: 900px !important;
     }
   
     .banner-buttons-container {
       margin-top: 6rem !important;
     }
+  }
+  
+
+  .mask-logo {
+    -webkit-mask-image: url('/assets/logo/logo.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  
+    mask-image: url('/assets/logo/logo.png');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  
+    /* Optional: drop shadow or filter if needed */
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
   }
   

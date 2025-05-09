@@ -239,3 +239,19 @@
     }
   }
   
+
+  .mask-logo {
+    -webkit-mask-image: url('/assets/logo/logo.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  
+    mask-image: url('/assets/logo/logo.png');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  
+    /* Optional: drop shadow or filter if needed */
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+  }
+  
